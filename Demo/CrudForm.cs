@@ -56,16 +56,16 @@ namespace Demo
 
                         connection.Open();
 
-                        using (SqlCommand command = new SqlCommand("SELECT * FROM NewDataBase.dbo.temp WHERE id = @id", connection))
+                        using (SqlCommand command = new SqlCommand("SELECT * FROM NewDataBase.dbo.temp WHERE id = @newId", connection))
                         {
 
-                            command.Parameters.AddWithValue("@id", newId);
+                            command.Parameters.AddWithValue("@newId", newId);
                             try
                             {
-                                connection.Open();
                                 SqlDataReader reader;
                                 reader = command.ExecuteReader();
                                 queryList.Items.Clear();
+                                inputBox.Text = string.Empty;
 
                                 while (reader.Read())
                                 {
